@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { CheckboxesPage } from '../pages/CheckboxesPage.js';
 
-test.describe('Checkboxes Tests', () => {
+test.describe('Чекбоксы', () => {
   let checkboxesPage;
 
   test.beforeEach(async ({ page }) => {
@@ -9,16 +9,14 @@ test.describe('Checkboxes Tests', () => {
     await checkboxesPage.navigateToPage();
   });
 
-  test('ДЕФЕКТ: Второй чекбокс предустановлен как отмеченный', async () => {
-    // Проверяем начальное состояние чекбоксов
+  test('ДЕФЕКТ: Второй чекбокс проставлен как отмеченный', async () => {
     const firstChecked = await checkboxesPage.isFirstCheckboxChecked();
     const secondChecked = await checkboxesPage.isSecondCheckboxChecked();
 
     expect(firstChecked).toBe(false);
-    // ДЕФЕКТ: второй чекбокс отмечен по умолчанию, хотя не должен быть
-    expect(secondChecked).toBe(true); // Этот тест покажет дефект
 
-    // Проверяем функциональность
+    expect(secondChecked).toBe(true);
+
     await checkboxesPage.checkFirstCheckbox();
     expect(await checkboxesPage.isFirstCheckboxChecked()).toBe(true);
 

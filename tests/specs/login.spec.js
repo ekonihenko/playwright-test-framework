@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage.js';
 
-test.describe('Login Tests', () => {
+test.describe('Тесты авторизации', () => {
   let loginPage;
 
   test.beforeEach(async ({ page }) => {
@@ -22,7 +22,6 @@ test.describe('Login Tests', () => {
     const errorMessage = await loginPage.getFlashMessage();
     expect(errorMessage).toContain('Your username is invalid!');
 
-    // Проверяем, что пользователь не залогинен
     expect(await loginPage.isLoggedIn()).toBe(false);
   });
 });
